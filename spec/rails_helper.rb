@@ -42,4 +42,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  #
+  config.before(:example) do
+    Neo4j::ActiveBase.current_session.query('MATCH (n) WHERE NOT(n:`Neo4j::Migrations::SchemaMigration`) DETACH DELETE(n)')
+  end
 end

@@ -1,5 +1,6 @@
 class RecipeController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  # TODO figure out a better way to handle CSRF
+  skip_before_action :verify_authenticity_token
   def show
     render :json => Recipe.all
   end

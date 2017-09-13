@@ -10,4 +10,13 @@ RSpec.describe 'Recipes', :type => :request do
     result = Recipe.find_by(name: 'derp')
     expect(result.description).to eq('some stuff')
   end
+
+  it 'should render the recipes' do
+    Recipe.new(name: 'foo', description: 'bar').save
+    Recipe.new(name: 'derp', description: 'flerp').save
+
+    get '/api/recipes'
+
+    expect(response.body).to eq(Recipe.all.to_json)
+  end
 end
