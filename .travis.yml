@@ -7,7 +7,7 @@ rvm:
 env:
   - RAILS_ENV=test
 script:
-  - docker-compose up && bundle exec rake neo4j:migrate && bundle exec rake spec
+  - docker-compose up -d && bundle exec rake neo4j:migrate && bundle exec rake spec
 deploy:
   provider: heroku
   app: grocer-web
