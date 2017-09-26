@@ -4,3 +4,7 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+Rake::Task['webpacker:yarn_install'].instance_eval do
+  @actions.reject! { |action| action.source_location[0] =~ /webpacker/ }
+end
