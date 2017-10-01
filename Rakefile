@@ -5,6 +5,3 @@ require_relative 'config/application'
 
 Rails.application.load_tasks
 
-Rake::Task['webpacker:check_yarn'].instance_eval do
-  @actions.reject! { |action| action.source_location[0] =~ /webpacker/ }
-end

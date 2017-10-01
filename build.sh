@@ -12,4 +12,5 @@ function wait_for_neo {
 docker-compose up -d
 wait_for_neo
 RAILS_ENV=test bundle exec rake neo4j:migrate
+yarn test
 bundle exec rake spec
